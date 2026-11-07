@@ -1,0 +1,17 @@
+[package]
+name = "grew"
+version = "0.1.0"
+edition = "2024"
+description = "CLI for Grew (Graph Rewriting for NLP)"
+homepage = "https://github.com/kod-kristoff/grew-rs"
+license = "CECILL-2.1"
+
+[lib]
+name = "grew"
+path = "src/grew.rs"
+
+[[bin]]
+name = "grewr"
+path = "src/bin/grewr.rs"
+
+[dependencies]
