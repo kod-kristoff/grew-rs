@@ -1,0 +1,7 @@
+# ignore files related to dune
+_build
+
+# Text editor and system
+.vscode
+.DS_Store
+

@@ -1,0 +1,119 @@
+\documentclass[a4paper]{article}
+
+\usepackage{fullpage}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsthm}
+\usepackage{url}
+\usepackage{graphicx}
+\usepackage{bussproofs}
+
+\newtheorem{definition}{Definition}
+\newtheorem{lemma}{Lemma}
+
+\newcommand{\ie}{{\it i.e.\ }}
+\newcommand{\pick}{\mathrm{pick}}
+\newcommand{\try}{\mathrm{try}}
+
+\title{Strategies for Grew}
+
+\date{}
+
+\begin{document}
+\maketitle
+
+\section{Notations}
+\label{sec:not}
+
+Let $\cal{G}$ be the set of graphs.
+When the graph $G$ rewrites to $G'$ with some rule $R$, we write $G \Longrightarrow_R G'$.
+
+\section{Strategies}
+\label{sec:strat}
+
+Given a set $\cal{R}$ of rules, strategies are defined by the following grammar:
+\[
+	S = R \mid (S) \mid S;S \mid S+S \mid S^* \mid \pick(S) \mid \try(S)
+\]
+
+Applying a strategy $S$ on the graph $G$ is a non-deterministic and non confluent process.
+Hence, we define a relation between a graph $G \in \cal{G}$ and a set of graphs $\cal{S} \subset \cal{G}$ written $G \longrightarrow_S \cal{S}$ with the following rules:
+
+\begin{prooftree}
+\AxiomC{}
+\LeftLabel{(Rule)}
+\UnaryInfC{$G \longrightarrow_R \{ G' \mid G \Longrightarrow_R G'\}$}
+\end{prooftree}
+
+
+\begin{prooftree}
+\AxiomC{$G \longrightarrow_{S_1} \{G_1, \ldots, G_k\}$}
+\AxiomC{$\forall i \in[1,k], G_i \longrightarrow_{S_2} E_i$}
+\LeftLabel{(Sequence)}
+\BinaryInfC{$G \longrightarrow_{S_1;S_2} \bigcup_{1\leq i \leq k}{E_i}$}
+\end{prooftree}
+
+
+\begin{prooftree}
+\AxiomC{$G \longrightarrow_{S_1} E_1$}
+\AxiomC{$G \longrightarrow_{S_2} E_2$}
+\LeftLabel{(Union)}
+\BinaryInfC{$G \longrightarrow_{S_1 + S_2} E_1 \cup E_2 $}
+\end{prooftree}
+
+
+\begin{center}
+\AxiomC{$G \longrightarrow_S \emptyset $}
+\LeftLabel{(Iter$_\emptyset$)}
+\UnaryInfC{$G \longrightarrow_{S^*} \{G\}$}
+\DisplayProof
+%
+\qquad
+%
+\AxiomC{$G \longrightarrow_{S} \{G_1, \ldots, G_k\}$}
+\AxiomC{$\forall i \in[1,k], G_i \longrightarrow_{S^*} E_i$}
+\LeftLabel{(Iter)}
+\BinaryInfC{$G \longrightarrow_{S^*} \bigcup_{1\leq i \leq k}{E_i}$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$G \longrightarrow_S \emptyset $}
+\LeftLabel{(Pick$_\emptyset$)}
+\UnaryInfC{$G \longrightarrow_{\pick(S)} \emptyset$}
+\DisplayProof
+%
+\qquad
+%
+\AxiomC{$G \longrightarrow_{S} \{G_1, \ldots, G_k\}$}
+\LeftLabel{(Pick)}
+\UnaryInfC{$G \longrightarrow_{\pick(S)} \{G_i\}$}
+\DisplayProof
+\end{center}
+
+\begin{center}
+\AxiomC{$G \longrightarrow_S \emptyset $}
+\LeftLabel{(One$_\emptyset$)}
+\UnaryInfC{$G \longrightarrow_{\try(S)} \{G\}$}
+\DisplayProof
+%
+\qquad
+%
+\AxiomC{$G \longrightarrow_{S} \{G_1, \ldots, G_k\}$}
+\LeftLabel{(One)}
+\UnaryInfC{$G \longrightarrow_{\try(S)} \{G_i\}$}
+\DisplayProof
+\end{center}
+
+\begin{lemma}
+If $S$ is a strategy, then $(\pick(S))^* \equiv \pick(S^*)$.
+\end{lemma}
+
+\begin{proof}
+	TODO
+\end{proof}
+
+We use the notation $S^! = \pick(S^*)$ as a shortcut.
+\end{document}
+
+
