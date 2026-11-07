@@ -1,0 +1,16 @@
+(executable
+ (public_name grew)
+ (name grew_main)
+ (libraries 
+   str
+   re
+   unix
+   dune-build-info
+   ANSITerminal 
+   containers 
+   yojson 
+   amr 
+   conll
+   grewlib
+ )
+)
