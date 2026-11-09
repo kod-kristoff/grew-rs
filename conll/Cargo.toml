@@ -1,0 +1,14 @@
+[package]
+name = "conll"
+version = "0.1.0"
+edition = "2024"
+description = "Manipulation of CoNLL files. Mainly developed to be used by Grew"
+homepage = "https://github.com/kod-kristoff/grew-rs"
+license = "CECILL-2.1"
+keywords = ["nlp"]
+categories = ["Text Processing"]
+
+[lib]
+path = "src/conll.rs"
+
+[dependencies]
