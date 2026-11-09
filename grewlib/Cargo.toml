@@ -1,0 +1,13 @@
+[package]
+name = "grewlib"
+version = "0.1.0"
+edition = "2024"
+description: "Grew implements a Graph Rewriting system to be used in NLP"
+license: "CECILL-2.1"
+keywords: ["nlp" "graph rewriting"]
+homepage: "https://github.com/kod-kristoff/grew-rs"
+
+[dependencies]
+
+[lib]
+path = "src/grewlib.rs"

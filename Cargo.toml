@@ -1,6 +1,6 @@
 [workspace]
 resolver = "3"
-members = ["conll", "grew"]
+members = ["conll", "grew", "grewlib"]
 
 [workspace.dependencies]
 conll = { path = "conll/" }
